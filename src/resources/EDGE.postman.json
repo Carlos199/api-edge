@@ -1,0 +1,256 @@
+{
+	"info": {
+		"_postman_id": "b99b8fef-f597-47e5-87e2-e6dd8ea2b2b3",
+		"name": "EDGE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api/auth/signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"carlos25\",\n    \"email\": \"carlos25@gmail.com\",\n    \"password\": \"123\",\n    \"roles\": [\"admin\", \"moderator\"]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/auth/signin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"carlos25@gmail.com\",\n    \"password\": \"123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET PRODUCTS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST PRODUCT",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjY0MmM3ZjlhZWQ2Y2UyMjA2ZmFhZiIsImlhdCI6MTYzOTQwODY1MiwiZXhwIjoxNjM5NDk1MDUyfQ.24sPYgCXpGorDuFKTLyWSf7l5A5WG1OTiU8JcGaWiw4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"notebook acer\",\n\t\"category\": \"informatica\",\n\t\"price\": \"2000000\",\n\t\"imgUrl\": \"http:image\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/products?content",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "content",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/ID PRODUCT",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjY0MmM3ZjlhZWQ2Y2UyMjA2ZmFhZiIsImlhdCI6MTYzOTQwODY1MiwiZXhwIjoxNjM5NDk1MDUyfQ.24sPYgCXpGorDuFKTLyWSf7l5A5WG1OTiU8JcGaWiw4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"notebook\",\n\t\"category\": \"informatica\",\n\t\"price\": \"2000000\",\n\t\"imgUrl\": \"http:image\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/products/61b4cb6889405c0f4ae98638",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products",
+						"61b4cb6889405c0f4ae98638"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT PRODUCT",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjY0MmM3ZjlhZWQ2Y2UyMjA2ZmFhZiIsImlhdCI6MTYzOTQwODY1MiwiZXhwIjoxNjM5NDk1MDUyfQ.24sPYgCXpGorDuFKTLyWSf7l5A5WG1OTiU8JcGaWiw4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"notebook acer\",\n\t\"category\": \"informatica\",\n\t\"price\": \"2000000\",\n\t\"imgUrl\": \"http:image\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/products/61b4cb6889405c0f4ae98638",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products",
+						"61b4cb6889405c0f4ae98638"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE PRODUCT",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjY0MmM3ZjlhZWQ2Y2UyMjA2ZmFhZiIsImlhdCI6MTYzOTQwODY1MiwiZXhwIjoxNjM5NDk1MDUyfQ.24sPYgCXpGorDuFKTLyWSf7l5A5WG1OTiU8JcGaWiw4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"notebook\",\n\t\"category\": \"informatica\",\n\t\"price\": \"2000000\",\n\t\"imgUrl\": \"http:image\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/products/61b4d210933b282ab4220330",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products",
+						"61b4d210933b282ab4220330"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

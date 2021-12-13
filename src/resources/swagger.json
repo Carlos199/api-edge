@@ -2,30 +2,40 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0", 
-    "title": "My User Project CRUD",
-    "description": "My User Project Application API",
-    "license": {
-      "name": "MIT",
-      "url": "https://opensource.org/licenses/MIT"
+    "title": "My product CRUD",
+    "description": "My Product Application API"
+  },
+
+  "securitySchemes": {
+    "bearer": {
+      "name": "Autorization",
+      "type": "http",
+      "scheme": "bearer"
     }
   },
-    "securitySchemes": {
-      "bearerAuth": {
-        "description": "token",
-        "type": "http",
-        "name": "x-access-token",
-        "scheme": "x-access-token",
-        "bearerFormat": "JWT"
-      }
+ 
+  "security": [
+    {
+      "bearer": []
     },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    }
+  ],
 
 
   "host": "localhost:3000",
   "basePath": "/api",
   "tags": [
     {
-      "name": "auth/register",
-      "description": "API for users in the system"
+      "name": "Products Registration",
+      "description": "API for product registration in the system"
     }
   ],
   "schemes": ["http"],
@@ -98,6 +108,7 @@
           "Products"
         ], 
         "parameters": [
+
           {
             "name": "user",
             "in": "body",
@@ -118,9 +129,12 @@
             "description": "Invalid id supplied"
           }
         },
-        "security":{
-          "bearerAuth": []
-        }
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+       
       },
       "delete": {
         "summary": "Delete project with given ID",
@@ -136,9 +150,11 @@
             ]
           }
         },
-        "security":{
-          "bearer": []
-        }
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
 
     "/auth/signup": {
