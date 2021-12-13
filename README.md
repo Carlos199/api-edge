@@ -54,5 +54,5 @@ Para las rutas protegidas como POST, PUT, y DELETE se necesita envia en el `Head
 
 ## Documentación
 
-La documentación está disponible en la carpeta `resources`, que contiene los archivos para postman y swagger.
-Ejemplo: [Swagger Doc](http://localhost:3000/api-docs)
+La documentación está disponible en la carpeta `src/resources`, que contiene los archivos para postman y swagger.
+Para poder ver la documentación en swagger se debe levantar el servidor local `yarn dev` y abrir la dirección http://localhost:3000/api-docs
