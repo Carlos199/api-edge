@@ -2,34 +2,34 @@
 
 En este ejemplo vamos a crear una api-rest para un crud de productos con autenticacion usando NODEJS, EXPRESS Y como base de datos MongoDB
 
-## Getting started
+## Empezando
 
-As a `prerequisite` I need to have [NodeJS](https://nodejs.org) and [Yarn](https://classic.yarnpkg.com/lang/en/docs/install) installed.
+Como "prerrequisito" necesito tener [NodeJS] (https://nodejs.org) y [Yarn] (https://classic.yarnpkg.com/lang/en/docs/install) instalados.
 
-### 1. Download example and install dependencies
+### 1. Descargar ejemplo e instalar dependencias
 
-Download this example:
+Descarga este ejemplo:
 
 ```
-curl -L -o api-edge.tar.gz https://github.com/tenondecrpc/edge-api/zip/refs/heads/master
+curl -L -o api-edge.tar.gz https://github.com/Carlos199/api-edge/archive/refs/heads/master.zip
 ```
 
-Install yarn dependencies:
+Instalar dependencias de yarn:
 
 ```
 cd api-edge
 yarn install
 ```
 
-<details><summary><strong>Alternative:</strong> Clone the entire repo</summary>
+<details><summary><strong>Alternativa:</strong> Clonar todo el repositorio</summary>
 
-Clone this repository:
+Clona este repositorio:
 
 ```
 git clone https://github.com/Carlos199/api-edge.git
 ```
 
-Install yarn dependencies:
+Instalar dependencias de yarn:
 
 ```
 cd api-edge
@@ -38,35 +38,21 @@ yarn install
 
 </details>
 
-### 2. Start the REST API server
+### 2. Inicie el servidor de la API REST
 
 ```
 yarn dev
 ```
 
-The server is now running on `http://localhost:3000`. You can send the API requests implemented in `app.js`.
+El servidor ahora se está ejecutando en `http://localhost:3000`. Puede enviar las solicitudes de API implementadas en `app.js`.
 
-### 2. Create docker migrate
+### 3. Prueba de rutas con postman
 
-Run the following command to create your SQLite database file. This also creates the `User` table that is defined in [`prisma/schema.prisma`](./prisma/schema.prisma):
+Para las rutas protegidas como POST, PUT, y DELETE se necesita envia en el `Heades` el `x-access-token` para obtener los permisos. Como se muestra abajo
 
 ![Screenshot](postman.png)
 
-```
-yarn docker-migrate
-```
+## Documentación
 
-### 3. Testing the endpoints
-
-The tests are located in the `__tests__` folder. In these you will find tests handled for cases if a same user is added twice and also to check if the users added are obtained correctly.
-
-The tests can be run using:
-
-```
-yarn docker-test
-```
-
-## Documentation
-
-The documentation is available in the `resources` folder, containing the files for postman and swagger
-Example: [Swagger Doc](https://app.swaggerhub.com/apis-docs/tenondecrpc/edge-api/1.0.0)
+La documentación está disponible en la carpeta `resources`, que contiene los archivos para postman y swagger.
+Ejemplo: [Swagger Doc](http://localhost:3000/api-docs)
