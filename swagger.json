@@ -1,0 +1,273 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0", 
+    "title": "My User Project CRUD",
+    "description": "My User Project Application API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+    "securitySchemes": {
+      "bearerAuth": {
+        "description": "token",
+        "type": "http",
+        "name": "x-access-token",
+        "scheme": "x-access-token",
+        "bearerFormat": "JWT"
+      }
+    },
+
+
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "auth/register",
+      "description": "API for users in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  
+  
+  "paths": {
+    "/products": {
+      "get": {
+        "summary": "List all products",
+        "operationId": "listProducts",
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "An paged array of products",
+            "headers": {
+              "x-next": {
+                "type": "string",
+                "description": "A link to the next page of responses"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Products"
+            },
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "200": {
+                "description": "ok",
+                "schema": {
+                  "$ref": "#/definitions/Products"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of project that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "summary": "Search project with given ID",
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Products"
+            }
+          }
+        }
+      },
+      "put": {  
+        "summary": "Update project with give ID",
+        "tags": [
+          "Products"
+        ], 
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Project with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/Products"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "project is updated",
+            "schema": {
+              "$ref": "#/definitions/Products"
+            }
+          },
+          "400": {
+            "description": "Invalid id supplied"
+          }
+        },
+        "security":{
+          "bearerAuth": []
+        }
+      },
+      "delete": {
+        "summary": "Delete project with given ID",
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "An paged array of products"
+            },
+            "produces": [
+              "application/json"
+            ]
+          }
+        },
+        "security":{
+          "bearer": []
+        }
+      },
+
+    "/auth/signup": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Create new user",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/signup"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "schema": {
+              "$ref": "#/definitions/signup"
+            }
+          }
+        }
+      } 
+    },
+    "/auth/signin": {
+      "post": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "login",
+          "parameters": [
+            {
+              "name": "user",
+              "in": "body",
+              "description": "LogIn user",
+              "schema": {
+                "$ref": "#/definitions/signin"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/signin"
+              }
+            }
+          }
+        }
+    }
+  },
+
+  "definitions": {
+    "signup": {
+      "required": [
+        "email",
+        "password"
+      ],
+      "properties": {
+        "userName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "required":true,
+           "unique": true
+        },
+        "password": {
+          "type": "string",
+          "required": true
+        },
+        "roles": {
+          "type": "array",
+          "$ref": "#/definitions/roles"
+        }
+       
+      }
+    },
+    "signin":{
+      "required": [
+        "email",
+        "password"
+      ],
+      "properties": {
+        "email": { 
+        "type": "string"
+        },
+        "password":{
+          "type": "string"
+        }
+      }
+    },
+    "Products":{
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": { 
+        "type": "string"
+        },
+        "category":{
+          "type": "string"
+        },
+        "price":{
+          "type": "string"
+        },
+        "imageUrl":{
+          "type": "string"
+        }
+       
+      }
+    },
+    "roles":{
+      "properties": {
+        "id": { 
+        "type": "string"
+        },
+        "name":{
+          "type": "string"
+        }
+      }
+    }
+   
+  }
+}
