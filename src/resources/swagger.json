@@ -256,7 +256,8 @@
     },
     "Products":{
       "required": [
-        "name"
+        "name",
+        "price"
       ],
       "properties": {
         "name": { 

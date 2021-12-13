@@ -1,15 +1,20 @@
 import { ROLES } from '../models/Role'
 import User from '../models/User'
+const emailvalidator = require('email-validator')
 
 export const checkDuplicateUsernameOrEmail = async (req, res, next) => {
   const user = await User.findOne({ username: req.body.username })
 
   if (user) return res.status(400).json({ message: 'The user already exists' })
 
-  const email = await User.findOne({ email: req.body.email })
+  if (emailvalidator.validate(req.body.email)) {
+    const email = await User.findOne({ email: req.body.email })
+    if (email)
+      return res.status(400).json({ message: 'The email already exists' })
+  } else {
+    res.status(400).json('Invalid Email')
+  }
 
-  if (email)
-    return res.status(400).json({ message: 'The email already exists' })
   next()
 }
 

@@ -2,9 +2,15 @@ import { Schema, model } from 'mongoose'
 const mongoosePaginate = require('mongoose-paginate-v2')
 const productSchema = new Schema(
   {
-    name: String,
+    name: {
+      type: String,
+      require: true
+    },
     category: String,
-    price: Number,
+    price: {
+      type: Number,
+      require: true
+    },
     imageUrl: String
   },
   {

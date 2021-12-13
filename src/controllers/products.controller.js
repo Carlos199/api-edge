@@ -1,22 +1,30 @@
 import Product from '../models/Product'
 
 exports.createProduct = async (req, res) => {
-  const { name, category, price, imgUrl } = req.body
+  try {
+    const { name, category, price, imgUrl } = req.body
+    if (!name) return res.status(404).json('name is required')
+    if (!price) return res.status(404).json('price is required')
 
-  const newProduct = new Product({ name, category, price, imgUrl })
-  const productSaved = await newProduct.save()
+    const newProduct = new Product({ name, category, price, imgUrl })
+    const productSaved = await newProduct.save()
 
-  res.status(200).send(productSaved)
+    res.status(200).send(productSaved)
+  } catch (error) {
+    res.status(400).json({ message: `Error, ${error} creating product` })
+  }
 }
 
 export const getProducts = async (req, res) => {
   const products = await Product.paginate({})
-  res.json(products)
+  if (products) return res.status(200).json(products)
+  res.status(404).json('No products')
 }
 
 export const getProductById = async (req, res) => {
   const product = await Product.findById(req.params.productId)
-  res.status(200).json(product)
+  if (product) return res.status(200).json(product)
+  res.status(404).json('product id does not exist')
 }
 
 export const updateProductById = async (req, res) => {
@@ -25,11 +33,14 @@ export const updateProductById = async (req, res) => {
     req.body,
     { new: true }
   )
-  res.status(200).json(updateProduct)
+  if (updateProduct) return res.status(200).json(updateProduct)
+  res.status(404).json('product id does not exist')
 }
 
 export const deleteProductById = async (req, res) => {
   const { productId } = req.params
-  await Product.findByIdAndDelete(productId)
-  res.status(200).json('susscefull')
+  const result = await Product.findByIdAndDelete(productId)
+  if (result) return res.status(200).json('susscefull')
+
+  res.status(404).json('product id does not exist')
 }
