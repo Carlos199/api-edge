@@ -4,7 +4,7 @@ En este ejemplo vamos a crear una api-rest para un crud de productos con autenti
 
 ## Empezando
 
-Como "prerrequisito" necesito tener [NodeJS] (https://nodejs.org) y [Yarn] (https://classic.yarnpkg.com/lang/en/docs/install) instalados.
+Como "prerrequisito" necesito tener [NodeJS](https://nodejs.org) y [Yarn](https://classic.yarnpkg.com/lang/en/docs/install) instalados.
 
 ### 1. Descargar ejemplo e instalar dependencias
 
@@ -48,7 +48,7 @@ El servidor ahora se está ejecutando en `http://localhost:3000`. Puede enviar l
 
 ### 3. Prueba de rutas con postman
 
-Para las rutas protegidas como POST, PUT, y DELETE se necesita envia en el `Heades` el `x-access-token` para obtener los permisos. Como se muestra abajo
+Para las rutas protegidas como POST, PUT, y DELETE se necesita envia en el `Headers` el `x-access-token` para obtener los permisos. Como se muestra abajo
 
 ![Screenshot](postman.png)
 
