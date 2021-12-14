@@ -1,4 +1,4 @@
-import Product from '../models/Product'
+const Product = require('../models/Product.js')
 
 exports.createProduct = async (req, res) => {
   try {
@@ -15,19 +15,19 @@ exports.createProduct = async (req, res) => {
   }
 }
 
-export const getProducts = async (req, res) => {
+exports.getProducts = async (req, res) => {
   const products = await Product.paginate({})
   if (products) return res.status(200).json(products)
   res.status(404).json('No products')
 }
 
-export const getProductById = async (req, res) => {
+exports.getProductById = async (req, res) => {
   const product = await Product.findById(req.params.productId)
   if (product) return res.status(200).json(product)
   res.status(404).json('product id does not exist')
 }
 
-export const updateProductById = async (req, res) => {
+exports.updateProductById = async (req, res) => {
   const updateProduct = await Product.findByIdAndUpdate(
     req.params.productId,
     req.body,
@@ -37,7 +37,7 @@ export const updateProductById = async (req, res) => {
   res.status(404).json('product id does not exist')
 }
 
-export const deleteProductById = async (req, res) => {
+exports.deleteProductById = async (req, res) => {
   const { productId } = req.params
   const result = await Product.findByIdAndDelete(productId)
   if (result) return res.status(200).json('susscefull')

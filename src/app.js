@@ -1,12 +1,12 @@
-import express from 'express'
-import { createRoles } from './libs/initialSetup'
-//
+const express = require('express')
+
+const productsRoutes = require('./routes/products.routes.js')
+const authRoutes = require('./routes/auth.routes.js')
+const { createRoles } = require('./libs/initialSetup')
+
 const app = express()
 createRoles()
 
-import productsRoutes from './routes/products.routes'
-import authRoutes from './routes/auth.routes'
-import userRoutes from './routes/user.routes'
 const swaggerUi = require('swagger-ui-express'),
   swaggerDocument = require('../src/resources/swagger.json')
 
@@ -22,6 +22,5 @@ app.use(
 )
 app.use('/api/products', productsRoutes)
 app.use('/api/auth', authRoutes)
-app.use('/api/users', userRoutes)
 
-export default app
+module.exports = app

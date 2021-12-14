@@ -1,0 +1,4 @@
+module.exports = {
+  jwtAccessTokenDashboard:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjc4ODRkNDA3MmY3ZDhjYTUwNGRhMiIsImlhdCI6MTYzOTQ0ODM3MiwiZXhwIjoxNjM5NTM0NzcyfQ.F1ODDtPT4zxPOedF0JVReKN5EXH5BTLhw_6-ZxIDSdE'
+}

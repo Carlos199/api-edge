@@ -1,9 +1,9 @@
-import User from '../models/User'
-import jwt from 'jsonwebtoken'
-import config from '../config'
-import Role from '../models/Role'
+const User = require('../models/User.js')
+const jwt = require('jsonwebtoken')
+const config = require('../config.js')
+const Role = require('../models/Role.js')
 
-export const signUp = async (req, res) => {
+exports.signUp = async (req, res) => {
   try {
     const { username, email, password, roles } = req.body
     if (!email) return res.status(404).json('email is required')
@@ -35,7 +35,7 @@ export const signUp = async (req, res) => {
   }
 }
 
-export const signIn = async (req, res) => {
+exports.signIn = async (req, res) => {
   const { email, password } = req.body
   const userFound = await User.findOne({ email }).populate('roles')
   if (!userFound) return res.status(400).json({ message: 'User not found' })

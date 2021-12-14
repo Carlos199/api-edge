@@ -1,6 +1,6 @@
-import Role from '../models/Role'
+const Role = require('../models/Role.js')
 
-export const createRoles = async () => {
+exports.createRoles = async () => {
   try {
     const count = await Role.estimatedDocumentCount()
 
