@@ -52,6 +52,14 @@ Para las rutas protegidas como POST, PUT, y DELETE se necesita envia en el `Head
 
 ![Screenshot](postman.png)
 
+### 2. Inicie el servidor de la API REST
+
+Para correr el test
+
+```
+yarn test
+```
+
 ## Documentación
 
 La documentación está disponible en la carpeta `src/resources`, que contiene los archivos para postman y swagger.
